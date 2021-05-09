@@ -40,7 +40,7 @@ describe('Gilded Rose', function () {
         }
     });
 
-    it(`'Aged Brie' actually increases in Quality the older it gets and icreases to max 50`, () => {
+    it(`'Aged Brie' actually increases in Quality the older it gets and increases to max 50`, () => {
         const itemName = 'Aged Brie';
         const sellIn = 10;
         const quality = 10;
@@ -65,7 +65,7 @@ describe('Gilded Rose', function () {
     });
 
     it(
-      `'Sulfuras, Hand of Ragnaros', being a legendary item, never has to be sold or decreases in Quality`,
+      `'Sulfuras', being a legendary item, never has to be sold or decreases in Quality`,
       () => {
         const itemName = 'Sulfuras, Hand of Ragnaros';
         const sellIn = 10;
@@ -80,7 +80,7 @@ describe('Gilded Rose', function () {
     });
 
     it(
-      `'Backstage passes to a TAFKAL80ETC concert' increases in Quality as its SellIn value approaches but does not go above 50`,
+      `'Backstage passes' increases in Quality as its SellIn value approaches but does not go above 50`,
       () => {
         const itemName = 'Backstage passes to a TAFKAL80ETC concert';
         const sellIn = 20;
@@ -102,7 +102,7 @@ describe('Gilded Rose', function () {
     });
 
     it(
-      `'Backstage passes to a TAFKAL80ETC concert' Quality increases by 2 when there are 10 days or less but does not go above 50`,
+      `'Backstage passes' Quality increases by 2 when there are 10 days or less but does not go above 50`,
       () => {
           const itemName = 'Backstage passes to a TAFKAL80ETC concert';
           const sellIn = 10;
@@ -124,7 +124,7 @@ describe('Gilded Rose', function () {
       });
 
     it(
-      `'Backstage passes to a TAFKAL80ETC concert' Quality increases by 3 when there are 5 days or less but does not go above 50`,
+      `'Backstage passes' Quality increases by 3 when there are 5 days or less but does not go above 50`,
       () => {
           const itemName = 'Backstage passes to a TAFKAL80ETC concert';
           const sellIn = 5;
@@ -146,7 +146,7 @@ describe('Gilded Rose', function () {
       });
 
     it(
-      `'Backstage passes to a TAFKAL80ETC concert' Quality drops to 0 when sellIn date < 0`,
+      `'Backstage passes' Quality drops to 0 when sellIn date < 0`,
       () => {
           const itemName = 'Backstage passes to a TAFKAL80ETC concert';
           const sellIn = 0;
@@ -164,7 +164,7 @@ describe('Gilded Rose', function () {
       });
 
   it(
-    `'Conjured Mana Cake' items degrade in Quality twice as fast as normal items but never goes below 0`,
+    `'Conjured' items degrade in Quality twice as fast as normal items but never goes below 0`,
     () => {
       const itemName = 'Conjured Mana Cake';
       const sellIn = 10;

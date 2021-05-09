@@ -21,7 +21,7 @@ interface Rule {
 
 interface Rules {
   [key: string]: Rule[];
-  default: Rule[];
+  __default: Rule[];
 }
 
 const conditionFunctions: ConditionFunctions = {
@@ -41,7 +41,8 @@ const MAX_ALLOWED_QUALITY = 50;
  * complex rules extremely easy without needing to understand the code.
  *
  * NOTE: All the rules for all items will be applied chronologically as they
- * appear in the array everyday
+ * appear in the array everyday. If no rule match then by default __default
+ * rule will be applied
  */
 const rules: Rules = {
   "Aged Brie": [
@@ -68,7 +69,7 @@ const rules: Rules = {
       }
     }
   ],
-  "Backstage passes to a TAFKAL80ETC concert": [
+  "Backstage passes": [
     {
       condition: {
         quality: {$lt: MAX_ALLOWED_QUALITY}
@@ -109,8 +110,8 @@ const rules: Rules = {
       }
     }
   ],
-  "Sulfuras, Hand of Ragnaros": [],
-  "Conjured Mana Cake": [
+  "Sulfuras": [],
+  "Conjured": [
     {
       condition: {
         quality: {$gt: LOWEST_ALLOWED_QUALITY}
@@ -151,7 +152,7 @@ const rules: Rules = {
       }
     }
   ],
-  default: [
+  __default: [
     {
       condition: {
         quality: {$gt: LOWEST_ALLOWED_QUALITY}

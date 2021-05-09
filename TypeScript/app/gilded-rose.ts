@@ -6,6 +6,12 @@ import {
 
 export type ItemKeys = Omit<Item, "name">;
 
+/**
+ * Get all keys except "__default"
+ */
+const ruleKeys = Object.keys(rules)
+  .filter(ruleKey => ruleKey !== "__default");
+
 export class Item {
     name: string;
     sellIn: number;
@@ -27,7 +33,10 @@ export class GildedRose {
 
     updateQuality() {
         for(const item of this.items) {
-            const itemRules = rules[item.name] || rules.default;
+            // Find the correct rule key else default to __default
+            const ruleName = ruleKeys
+              .find(ruleKey => item.name.toLowerCase().includes(ruleKey.toLowerCase())) || "__default";
+            const itemRules = rules[ruleName];
 
             for(const itemRule of itemRules) {
                 let isRuleConditionSatisfied = true;
