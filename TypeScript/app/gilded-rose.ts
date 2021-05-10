@@ -1,16 +1,12 @@
 import {
     ConditionOperators,
     rules,
-    conditionFunctions
+    conditionFunctions,
+    DEFAULT_RULE_IF_NO_MATCH,
+    ruleKeys
 } from "./gilded-rose-rules";
 
 export type ItemKeys = Omit<Item, "name">;
-
-/**
- * Get all keys except "__default"
- */
-const ruleKeys = Object.keys(rules)
-  .filter(ruleKey => ruleKey !== "__default");
 
 export class Item {
     name: string;
@@ -31,11 +27,24 @@ export class GildedRose {
         this.items = items;
     }
 
+    /**
+     * This method does below for each item in items array.
+     * 1] Find the rule name matching the item.name. If no rule found then
+     *    use "__default" rule.
+     * 2] For each rule defined in the rules checks if the condition is defined
+     *    for that rule.
+     * 3] If condition is defined then check if all the conditions for EACH key are valid.
+     * 4] If all the conditions for each key defined in itemRule.condition is valid then
+     *    only performs action defined for all the keys else skips the action if any condition
+     *    for any key is false.
+     * 5] If condition for any rule is not defined then directly EXECUTES the action defined
+     *    for all the keys in itemRule.action.
+     */
     updateQuality() {
         for(const item of this.items) {
-            // Find the correct rule key else default to __default
+            // Find the correct rule key else default to DEFAULT_RULE_IF_NO_MATCH
             const ruleName = ruleKeys
-              .find(ruleKey => item.name.toLowerCase().includes(ruleKey.toLowerCase())) || "__default";
+              .find(ruleKey => item.name.toLowerCase().includes(ruleKey.toLowerCase())) || DEFAULT_RULE_IF_NO_MATCH;
             const itemRules = rules[ruleName];
 
             for(const itemRule of itemRules) {

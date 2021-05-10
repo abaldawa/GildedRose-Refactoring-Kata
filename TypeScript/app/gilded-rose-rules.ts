@@ -31,6 +31,7 @@ const conditionFunctions: ConditionFunctions = {
 
 const LOWEST_ALLOWED_QUALITY = 0;
 const MAX_ALLOWED_QUALITY = 50;
+const DEFAULT_RULE_IF_NO_MATCH = '__default';
 
 /**
  * This is a DSL to define conditions and, if true, its associated actions.
@@ -152,7 +153,7 @@ const rules: Rules = {
       }
     }
   ],
-  __default: [
+  [DEFAULT_RULE_IF_NO_MATCH]: [
     {
       condition: {
         quality: {$gt: LOWEST_ALLOWED_QUALITY}
@@ -178,10 +179,16 @@ const rules: Rules = {
   ]
 };
 
+/**
+ * Get all keys except "__default"
+ */
+const ruleKeys = Object.keys(rules)
+  .filter(ruleKey => ruleKey !== DEFAULT_RULE_IF_NO_MATCH);
+
 export {
-  ItemKeys,
   ConditionOperators,
-  ActionOperators,
   rules,
   conditionFunctions,
+  DEFAULT_RULE_IF_NO_MATCH,
+  ruleKeys
 }

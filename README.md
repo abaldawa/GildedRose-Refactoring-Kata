@@ -22,8 +22,8 @@ This DSL makes adding rules, modifying rules and reasoning/understanding
 complex rules extremely easy without needing to understand the code.  
   
 **NOTE:** All the rules for all items will be applied chronologically as they
-appear in the array every day. If no rule match then by default __default
-rule will be applied. The updateQuality function is updated to work with this
+appear in the array every day. If no rule match then by default `__default`
+rule will be applied. The `updateQuality` function is updated to work with this
 DSL configuration.  
 
 Check below how the DSL to define condition and action looks like:
