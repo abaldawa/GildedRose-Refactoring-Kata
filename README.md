@@ -33,6 +33,7 @@ for more details
 ```typescript
 const LOWEST_ALLOWED_QUALITY = 0;
 const MAX_ALLOWED_QUALITY = 50;
+const DEFAULT_RULE_IF_NO_MATCH = '__default';
 
 const rules: Rules = {
   "Aged Brie": [
@@ -142,7 +143,7 @@ const rules: Rules = {
       }
     }
   ],
-  __default: [
+  [DEFAULT_RULE_IF_NO_MATCH]: [
     {
       condition: {
         quality: {$gt: LOWEST_ALLOWED_QUALITY}
