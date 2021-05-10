@@ -35,6 +35,13 @@ const LOWEST_ALLOWED_QUALITY = 0;
 const MAX_ALLOWED_QUALITY = 50;
 const DEFAULT_RULE_IF_NO_MATCH = '__default';
 
+/**
+ * An "action" is only executed if all the conditions 
+ * in "condition" is true.
+ * 
+ * If an "action" is defined without "condition" then
+ * the action will always be executed
+ */
 const rules: Rules = {
   "Aged Brie": [
     {
