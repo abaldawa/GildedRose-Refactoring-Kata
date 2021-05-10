@@ -25,23 +25,23 @@ interface Rules {
 }
 
 const conditionFunctions: ConditionFunctions = {
-  $lt: (a: number, b: number) => a < b,
-  $gt: (a: number, b: number) => a > b
+  $lt: (itemValue: number, $ltValue: number) => itemValue < $ltValue,
+  $gt: (itemValue: number, $gtValue: number) => itemValue > $gtValue
 };
 
 const LOWEST_ALLOWED_QUALITY = 0;
 const MAX_ALLOWED_QUALITY = 50;
 
 /**
- * This is a DSL to define conditions and, it true, its associated actions.
+ * This is a DSL to define conditions and, if true, its associated actions.
  * Every rule in the array for each item will be executed one by one.
  * This helps define complex conditions/scenarios and actions per item.
  *
- * This is DSL makes adding rules, modifying rules and reasoning/understanding
+ * This DSL makes adding rules, modifying rules and reasoning/understanding
  * complex rules extremely easy without needing to understand the code.
  *
  * NOTE: All the rules for all items will be applied chronologically as they
- * appear in the array everyday. If no rule match then by default __default
+ * appear in the array every day. If no rule match then by default __default
  * rule will be applied
  */
 const rules: Rules = {
